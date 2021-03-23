@@ -21,7 +21,7 @@ Eq 1 : F = (P x D) / H
 ```
 
 <br/>
-[](png.png)
+[](./png.png?raw=true)
 <br/>
 
 ## Then Detect the Distance between the Camera and Object
