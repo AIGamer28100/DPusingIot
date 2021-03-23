@@ -21,7 +21,11 @@ Eq 1 : F = (P x D) / H
 ```
 
 <br/>
-[Explanation Image](png.png)
+<p align="center">
+  
+  ![Explanation Image](https://github.com/AIGamer28100/DPusingIot/blob/main/png.png)
+  
+</p>
 <br/>
 
 ## Then Detect the Distance between the Camera and Object
