@@ -36,7 +36,8 @@ def Unread(request):
             data = request.POST.get("content").split(",")[1]
             with open(f"app/data/{request.session.session_key}-clientImage.png", 'wb') as f:
                 f.write(base64.b64decode(data))
-        except:
+        except Exception as e:
+            print(e)
             return HttpResponse(f"{data}")
     return HttpResponse(f"{data}")
 
