@@ -35,10 +35,11 @@ def Unread(request):
         try:
             data = request.POST.get("content").split(",")[1]
             with open(f"app/data/{request.session.session_key}-clientImage.png", 'wb') as f:
-                f.write(base64.b64decode(data))
+                f.write(base64.decodebytes(data))
         except:
-            pass
+            return HttpResponse(f"{data}")
     return HttpResponse(f"{data}")
 
 def feed_cam(request):
-    return StreamingHttpResponse(gen(request).frame(), content_type='multipart/x-mixed-replace; boundary=frame')
+    x = gen(request)
+    return StreamingHttpResponse(x.frame(), content_type='multipart/x-mixed-replace; boundary=frame')
