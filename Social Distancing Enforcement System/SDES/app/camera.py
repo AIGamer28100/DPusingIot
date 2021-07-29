@@ -13,9 +13,9 @@ class FaceDetect():
 
         self.args = {
             'session' : session,
-            'model' : "app\SSD_MobileNet.caffemodel",
-            'prototxt' : "app\SSD_MobileNet_prototxt.txt",
-            'labels' : "app\class_labels.txt",
+            'model' : "app/SSD_MobileNet.caffemodel",
+            'prototxt' : "app/SSD_MobileNet_prototxt.txt",
+            'labels' : "app/class_labels.txt",
             'confidence' : 0.5
         }
 
