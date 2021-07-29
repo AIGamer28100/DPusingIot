@@ -19,9 +19,8 @@
     	<video autoplay="true" id="videoElement" allow="geoloaction" hidden></video>
       <canvas id="canvasOutput" hidden></canvas>
 
-      <div class="form-group" hidden>
-        <input id="txt" class="form-control" type="text" value="caption">
-        <button id="button" class="form-control" type="button" value="POST" onclick="click()">Start</button>
+      <div class="form-group">
+        <button id="button" class="form-control" type="button" value="POST">Start</button>
       </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -32,9 +31,8 @@
       const canvas = document.getElementById('canvasOutput');
       const context = canvas.getContext("2d");
       const button = document.getElementById('button');
-      const constrains = {audio : false, video : true};
-      const results = document.getElementById('txt');
-
+      const constrains = {audio : false, video: { width: { max: 1080 }, height: { max: 720 }}};
+      button.onclick = function() {click()};
       function post() {
         if (button.innerText == "Stop"){
           context.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -43,9 +41,9 @@
             content : canvas.toDataURL("image/png")
           },
           function(data, status){
-            results.value = status + ":" + data;
+            return true
           });
-          setTimeout(() =>{post();}, 200);
+          setTimeout(() =>{post();}, 100);
         } else{
           return true
         }
@@ -55,13 +53,13 @@
         if (button.value == "POST") {
           button.value = "SEND";
           button.innerText = "Stop";
-          post();
+          return post();
         } else {
           button.innerText = "Start";
           button.value = "POST";
         }
       };
-      click()
+      // click()
       navigator.mediaDevices.getUserMedia(constrains)
       .then(function(mediaStream) {
         video.srcObject = mediaStream;
